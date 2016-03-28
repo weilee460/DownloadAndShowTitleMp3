@@ -54,6 +54,7 @@ class ViewController: UIViewController, NSURLSessionDownloadDelegate {
             if iterm.commonKey == "title"
             {
                 print("Title: \(iterm.stringValue)!")
+                mp3NameLabel.text = iterm.stringValue!
             }
         }
     }
