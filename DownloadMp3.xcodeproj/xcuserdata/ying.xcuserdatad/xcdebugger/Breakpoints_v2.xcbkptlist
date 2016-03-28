@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DownloadMp3/ViewController.swift"
+            timestampString = "480868424.640545"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
+            landmarkName = "URLSession(_:downloadTask:didFinishDownloadingToURL:)"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "DownloadMp3.ViewController.URLSession (__ObjC.NSURLSession, downloadTask : __ObjC.NSURLSessionDownloadTask, didFinishDownloadingToURL : __ObjC.NSURL) -&gt; ()"
+                  moduleName = "DownloadMp3"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ying/ios/DownloadMp3/DownloadMp3/ViewController.swift"
+                  timestampString = "480863290.300175"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "71"
+                  endingLineNumber = "71"
+                  offsetFromSymbolStart = "450">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "DownloadMp3.ViewController.URLSession (__ObjC.NSURLSession, downloadTask : __ObjC.NSURLSessionDownloadTask, didFinishDownloadingToURL : __ObjC.NSURL) -&gt; ()"
+                  moduleName = "DownloadMp3"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ying/ios/DownloadMp3/DownloadMp3/ViewController.swift"
+                  timestampString = "480863290.3004"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "71"
+                  endingLineNumber = "71"
+                  offsetFromSymbolStart = "566">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
