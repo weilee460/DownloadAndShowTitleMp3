@@ -15,13 +15,15 @@ class ViewController: UIViewController, NSURLSessionDownloadDelegate {
 
     @IBOutlet weak var mp3NameLabel: UILabel!
     
+    //创建URLSession Configuration
     var backgroundConfiguration: NSURLSessionConfiguration?
+    //创建URLSession
     var backgroundSession: NSURLSession?
+    //创建URLSessionTask
     var backgroundTask: NSURLSessionDownloadTask?
-    
+    //获取应用的文件路径
     let documents: String = "file://" + NSHomeDirectory() + "/Documents/1.mp3"
-    var fileManager: NSFileManager = NSFileManager.defaultManager()
-    
+    //创建播放器
     var musicPlayer: AVAudioPlayer?
     
     override func viewDidLoad() {
@@ -29,53 +31,55 @@ class ViewController: UIViewController, NSURLSessionDownloadDelegate {
         // Do any additional setup after loading the view, typically from a nib.
         
         backgroundConfiguration = NSURLSessionConfiguration.backgroundSessionConfigurationWithIdentifier("downLoadMusic")
-        
         backgroundSession = NSURLSession(configuration: backgroundConfiguration!, delegate: self, delegateQueue: nil)
     }
-    
+    //下载文件
     func downloadMusic() {
         print("Start download files!")
         
         //var urlString = "http://nginx.org/download/nginx-1.8.1.tar.gz"
-        var urlString = "http://xia2.kekenet.com/Sound/song/songs/51.mp3"
-        var downloadUrl = NSURL(string: urlString)!
+        let urlString = "http://xia2.kekenet.com/Sound/song/songs/51.mp3"
+        let downloadUrl = NSURL(string: urlString)!
         backgroundTask = backgroundSession!.downloadTaskWithURL(downloadUrl)
         
         backgroundTask!.resume()
     }
-    
+    //提取文件信息
     func extrctMusicInfo() {
         
-        var location = NSURL(string: documents)!
-        var palyerItem = AVPlayerItem(URL: location)
-        let metadataList = palyerItem.asset.commonMetadata as! [AVMetadataItem]
+        let location = NSURL(string: documents)!
+        let palyerItem = AVPlayerItem(URL: location)
+        let metadataList = palyerItem.asset.commonMetadata 
         for iterm in metadataList
         {
             if iterm.commonKey == "title"
             {
                 print("Title: \(iterm.stringValue)!")
+                //更新Label
                 mp3NameLabel.text = iterm.stringValue!
             }
         }
     }
-
+    
+    
+    //MARK: - Action
     @IBAction func startDownload(sender: UIButton) {
         downloadMusic()
     }
     
-    //MARK: - delegate
+    //MARK: - NSURLSessionDownloadDelegate
     func URLSession(session: NSURLSession, downloadTask: NSURLSessionDownloadTask, didFinishDownloadingToURL location: NSURL) {
+        
         print("finish download. location: \(location)")
-        print("Home directory is: \(NSHomeDirectory())")
+        
+        let fileManager: NSFileManager = NSFileManager.defaultManager()
         
          if let documentURL = NSURL(string: documents)
          {
             do
             {
-                print("destination location: \(documentURL)")
-                //try filemanager.moveItemAtURL(location, toURL: documentURL!)
+                //拷贝文件，从temp目录拷贝到Documents目录
                 try fileManager.copyItemAtURL(location, toURL: documentURL)
-                print("location: \(documents)")
             }
             catch let error as NSError
             {
