@@ -18,6 +18,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9jZ-br-Bck">
+                                <rect key="frame" x="268.5" y="59.5" width="64" height="32"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <state key="normal" title="开始下载"/>
+                                <connections>
+                                    <action selector="startDownload:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0Dz-C2-2aO"/>
+                                </connections>
+                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ob8-y9-xHy">
                                 <rect key="frame" x="128" y="27" width="452" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -30,14 +38,9 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9jZ-br-Bck">
-                                <rect key="frame" x="268.5" y="59.5" width="64" height="32"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <state key="normal" title="开始下载"/>
-                                <connections>
-                                    <action selector="startDownload:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0Dz-C2-2aO"/>
-                                </connections>
-                            </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="eSl-kt-ZNZ">
+                                <rect key="frame" x="290" y="99.5" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -46,8 +49,10 @@
                             <constraint firstAttribute="leadingMargin" secondItem="cHs-gO-NER" secondAttribute="leading" id="IOX-AO-Fql"/>
                             <constraint firstItem="cHs-gO-NER" firstAttribute="baseline" secondItem="Ob8-y9-xHy" secondAttribute="baseline" id="TfW-R1-sjg"/>
                             <constraint firstItem="9jZ-br-Bck" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="dBq-zj-DWX"/>
+                            <constraint firstItem="eSl-kt-ZNZ" firstAttribute="top" secondItem="9jZ-br-Bck" secondAttribute="bottom" constant="8" symbolic="YES" id="eGk-Ah-YkG"/>
                             <constraint firstItem="Ob8-y9-xHy" firstAttribute="leading" secondItem="cHs-gO-NER" secondAttribute="trailing" constant="8" symbolic="YES" id="ehg-h8-UX2"/>
                             <constraint firstItem="Ob8-y9-xHy" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" symbolic="YES" id="huE-ow-hbR"/>
+                            <constraint firstItem="eSl-kt-ZNZ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="rh1-9h-VFL"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Ob8-y9-xHy" secondAttribute="trailing" id="usm-Mc-b69"/>
                             <constraint firstItem="cHs-gO-NER" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" symbolic="YES" id="yUh-Dy-Cug"/>
                         </constraints>
@@ -58,6 +63,7 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="downloadIndicator" destination="eSl-kt-ZNZ" id="Jft-Pv-ZiW"/>
                         <outlet property="mp3NameLabel" destination="Ob8-y9-xHy" id="CAG-7t-aHN"/>
                     </connections>
                 </viewController>

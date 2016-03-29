@@ -13,6 +13,7 @@ import MediaPlayer
 class ViewController: UIViewController, NSURLSessionDownloadDelegate {
     
 
+    @IBOutlet weak var downloadIndicator: UIActivityIndicatorView!
     @IBOutlet weak var mp3NameLabel: UILabel!
     
     //创建URLSession Configuration
@@ -43,6 +44,7 @@ class ViewController: UIViewController, NSURLSessionDownloadDelegate {
         backgroundTask = backgroundSession!.downloadTaskWithURL(downloadUrl)
         
         backgroundTask!.resume()
+        downloadIndicator.startAnimating()
     }
     //提取文件信息
     func extrctMusicInfo() {
@@ -71,6 +73,8 @@ class ViewController: UIViewController, NSURLSessionDownloadDelegate {
     func URLSession(session: NSURLSession, downloadTask: NSURLSessionDownloadTask, didFinishDownloadingToURL location: NSURL) {
         
         print("finish download. location: \(location)")
+        //停止indicator
+        downloadIndicator.stopAnimating()
         
         let fileManager: NSFileManager = NSFileManager.defaultManager()
         
