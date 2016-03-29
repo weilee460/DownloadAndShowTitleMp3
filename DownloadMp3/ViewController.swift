@@ -52,14 +52,17 @@ class ViewController: UIViewController, NSURLSessionDownloadDelegate {
         
         let location = NSURL(string: documents)!
         let palyerItem = AVPlayerItem(URL: location)
-        let metadataList = palyerItem.asset.commonMetadata 
+        let metadataList = palyerItem.asset.commonMetadata
         for iterm in metadataList
         {
             if iterm.commonKey == "title"
             {
-                print("Title: \(iterm.stringValue)!")
-                //更新Label
-                mp3NameLabel.text = iterm.stringValue!
+                print("Title: \(iterm.stringValue!)")
+                //更新Label，需要在主线程中更新
+                dispatch_async(dispatch_get_main_queue()){
+                    self.mp3NameLabel.text! = iterm.stringValue!
+                }
+                
             }
         }
     }
