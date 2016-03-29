@@ -33,6 +33,7 @@ class ViewController: UIViewController, NSURLSessionDownloadDelegate {
         
         backgroundConfiguration = NSURLSessionConfiguration.backgroundSessionConfigurationWithIdentifier("downLoadMusic")
         backgroundSession = NSURLSession(configuration: backgroundConfiguration!, delegate: self, delegateQueue: nil)
+        downloadIndicator.hidesWhenStopped = true
     }
     //下载文件
     func downloadMusic() {
